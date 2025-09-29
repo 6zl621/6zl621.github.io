@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给钟同学的心意（自然闪烁版）</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: linear-gradient(to bottom, #050a1f, #101835);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .name {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 30px 0;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            position: relative;
+            z-index: 10;
+        }
+        .heart-box {
+            text-align: center;
+            margin: 0 0 40px 0;
+            position: relative;
+            z-index: 10;
+        }
+        .mosaic-heart {
+            position: relative;
+            width: 200px;
+            height: 180px;
+            margin: 0 auto;
+            animation: breathe 3s infinite ease-in-out;
+        }
+        @keyframes breathe {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(0.8); }
+        }
+        .mosaic-heart span {
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffb6c1;
+            border-radius: 2px;
+            animation: pinkPulse 2s infinite alternate;
+        }
+        @keyframes pinkPulse {
+            0% { background-color: #ffcce5; }
+            100% { background-color: #ff69b4; }
+        }
+        /* 爱心碎片定位 */
+        .mosaic-heart span:nth-child(1) { top: 20px; left: 50px; }
+        .mosaic-heart span:nth-child(2) { top: 20px; left: 130px; }
+        .mosaic-heart span:nth-child(3) { top: 40px; left: 30px; }
+        .mosaic-heart span:nth-child(4) { top: 40px; left: 70px; }
+        .mosaic-heart span:nth-child(5) { top: 40px; left: 110px; }
+        .mosaic-heart span:nth-child(6) { top: 40px; left: 150px; }
+        .mosaic-heart span:nth-child(7) { top: 60px; left: 10px; }
+        .mosaic-heart span:nth-child(8) { top: 60px; left: 50px; }
+        .mosaic-heart span:nth-child(9) { top: 60px; left: 90px; }
+        .mosaic-heart span:nth-child(10) { top: 60px; left: 130px; }
+        .mosaic-heart span:nth-child(11) { top: 60px; left: 170px; }
+        .mosaic-heart span:nth-child(12) { top: 80px; left: 30px; }
+        .mosaic-heart span:nth-child(13) { top: 80px; left: 70px; }
+        .mosaic-heart span:nth-child(14) { top: 80px; left: 110px; }
+        .mosaic-heart span:nth-child(15) { top: 80px; left: 150px; }
+        .mosaic-heart span:nth-child(16) { top: 100px; left: 50px; }
+        .mosaic-heart span:nth-child(17) { top: 100px; left: 90px; }
+        .mosaic-heart span:nth-child(18) { top: 100px; left: 130px; }
+        .mosaic-heart span:nth-child(19) { top: 120px; left: 70px; }
+        .mosaic-heart span:nth-child(20) { top: 120px; left: 110px; }
+        .mosaic-heart span:nth-child(21) { top: 140px; left: 90px; }
+        .text {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #eaeaea;
+            line-height: 2;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 600px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .photo {
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            display: block;
+            border: 4px solid white;
+            position: relative;
+            z-index: 10;
+        }
+        .photo-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            z-index: 10;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 四角星星基础样式 */
+        .starry-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .star {
+            position: absolute;
+            background-color: #fff;
+            opacity: 0;
+            clip-path: polygon(
+                50% 0%,    /* 顶部角 */
+                61% 35%,   /* 右上角中间 */
+                98% 35%,   /* 右上角 */
+                68% 57%,   /* 右下角中间 */
+                79% 91%,   /* 右下角 */
+                50% 70%,   /* 底部中间 */
+                21% 91%,   /* 左下角 */
+                32% 57%,   /* 左下角中间 */
+                2% 35%,    /* 左上角 */
+                39% 35%    /* 左上角中间 */
+            );
+            filter: drop-shadow(0 0 5px rgba(255, 255, 200, 0.8));
+        }
+
+        /* 1. 自然闪烁动画：多阶段渐变+随机节奏（用JS动态分配） */
+        @keyframes naturalTwinkle1 {
+            0% { opacity: 0.6; transform: scale(0.8); }
+            20% { opacity: 0.9; transform: scale(1); }
+            40% { opacity: 0.7; transform: scale(0.9); }
+            60% { opacity: 1; transform: scale(1.05); }
+            80% { opacity: 0.8; transform: scale(0.95); }
+            100% { opacity: 0.6; transform: scale(0.8); }
+        }
+        @keyframes naturalTwinkle2 {
+            0% { opacity: 0.8; transform: scale(0.9); }
+            30% { opacity: 0.5; transform: scale(0.8); }
+            50% { opacity: 0.9; transform: scale(1); }
+            70% { opacity: 0.6; transform: scale(0.85); }
+            100% { opacity: 0.8; transform: scale(0.9); }
+        }
+        @keyframes naturalTwinkle3 {
+            0% { opacity: 0.7; transform: scale(0.85); }
+            15% { opacity: 0.95; transform: scale(1.02); }
+            30% { opacity: 0.85; transform: scale(0.95); }
+            50% { opacity: 0.65; transform: scale(0.88); }
+            70% { opacity: 1; transform: scale(1.08); }
+            85% { opacity: 0.9; transform: scale(1.01); }
+            100% { opacity: 0.7; transform: scale(0.85); }
+        }
+
+        /* 2. 星星下落动画（保持明显轨迹） */
+        @keyframes starFall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="starry-sky" id="starrySky"></div>
+    
+    <div class="fade-in">
+        <h1 class="name">钟同学</h1>
+        <div class="heart-box">
+            <div class="mosaic-heart">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <p class="text">
+            你是我始料不及的遇见,<br>
+            也是我突如其来的欢喜.<br>
+            星河滚烫,<br>
+            你是人间理想.
+        </p>
+        <div class="photo-container">
+            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/436d5b91e9a54e498c312bf6b7f5b4cd.jpg~tplv-a9rns2rl98-24:720:720.image?rk3s=1fb89129&x-expires=1758018692&x-signature=DY2okKGLP4RgMaT2sXCOtrJAKg8%3D" 
+                 class="photo" alt="与钟同学的合照">
+        </div>
+    </div>
+
+    <script>
+        // 照片加载错误处理
+        const photo = document.querySelector('.photo');
+        photo.addEventListener('error', function() {
+            this.alt = "照片加载失败";
+            this.style.border = "2px dashed #ff69b4";
+            this.style.backgroundColor = "#333";
+            this.style.minHeight = "200px";
+            this.style.display = "flex";
+            this.style.alignItems = "center";
+            this.style.justifyContent = "center";
+            this.innerHTML = "请检查网络连接";
+            this.style.color = "#fff";
+        });
+
+        // 核心优化：自然闪烁效果实现
+        function createNaturalStar() {
+            const sky = document.getElementById('starrySky');
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // 1. 基础属性：保持可见性
+            const size = Math.random() * 15 + 8; // 8-23px
+            const startX = Math.random() * window.innerWidth;
+            const fallDuration = Math.random() * 4 + 2; // 2-6秒下落
+            const fallDelay = Math.random() * 1; // 0-1秒延迟
+            const rotate = Math.random() * 360;
+            const colors = ['#ffffff', '#f0e68c', '#ffeb3b', '#fffacd'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            // 2. 自然闪烁关键：随机分配动画类型+随机时长+随机延迟
+            const twinkleTypes = ['naturalTwinkle1', 'naturalTwinkle2', 'naturalTwinkle3'];
+            const randomType = twinkleTypes[Math.floor(Math.random() * twinkleTypes.length)]; // 随机闪烁曲线
+            const twinkleDuration = Math.random() * 3 + 2; // 闪烁周期随机：2-5秒（避免统一节奏）
+            const twinkleDelay = Math.random() * 1.5; // 闪烁启动延迟随机：0-1.5秒（避免同步）
+
+            // 3. 星星样式设置
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${startX}px`;
+            star.style.top = `-${size}px`;
+            star.style.backgroundColor = color;
+            star.style.transform = `rotate(${rotate}deg)`;
+            // 组合动画：下落+自然闪烁（各自随机参数）
+            star.style.animation = `${randomType} ${twinkleDuration}s ease-in-out ${twinkleDelay}s infinite, 
+                                    starFall ${fallDuration}s linear ${fallDelay}s forwards`;
+
+            // 4. 额外自然感：下落中闪烁强度轻微衰减（模拟“远离”效果）
+            let startTime;
+            function adjustBrightness(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const fallProgress = elapsed / (fallDuration * 1000); // 下落进度（0-1）
+                
+                // 下落后期（70%进度后），亮度缓慢降低
+                if (fallProgress > 0.7) {
+                    const brightness = 1 - (fallProgress - 0.7) * 1.4; // 0.7→1时亮度从1→0
+                    star.style.opacity = Math.max(brightness, 0); // 不低于0
+                }
+
+                // 星星未消失则继续调整
+                if (fallProgress < 1) {
+                    requestAnimationFrame(adjustBrightness);
+                }
+            }
+
+            // 5. 自然摇摆（保留但调整幅度，避免过度）
+            const swayAmplitude = Math.random() * 60 + 20; // 20-80px摇摆
+            const swayFrequency = Math.random() * 0.8 + 0.4; // 0.4-1.2Hz频率
+            function animateSway(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const sway = Math.sin(elapsed * 0.001 * swayFrequency) * swayAmplitude;
+                star.style.left = `${startX + sway}px`;
+
+                if (parseFloat(getComputedStyle(star).opacity) > 0) {
+                    requestAnimationFrame(animateSway);
+                }
+            }
+
+            // 启动动画
+            requestAnimationFrame(adjustBrightness);
+            requestAnimationFrame(animateSway);
+            sky.appendChild(star);
+
+            // 动画结束后清理
+            setTimeout(() => {
+                star.remove();
+            }, (fallDuration + fallDelay) * 1000);
+        }
+
+        // 保持星星密度，确保视觉效果
+        setInterval(createNaturalStar, 150);
+        for (let i = 0; i < 60; i++) {
+            setTimeout(createNaturalStar, i * 100);
+        }
+    </script>
+</body>
+</html>
